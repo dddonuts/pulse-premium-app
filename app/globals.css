@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-premium-dark text-slate-100 antialiased min-h-screen;
+}
+
+/* (pp-drift) conservé si tu veux un mode CSS, mais le fond utilise maintenant une simulation JS */
+
+@keyframes pp-borderflow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
