@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import type { Stage } from "konva";
+import type Konva from "konva";
 import { BannerStage } from "@/components/BannerStage";
 import { Controls } from "@/components/Controls";
 
@@ -9,7 +9,7 @@ const PREVIEW_WIDTH = 720;
 const PREVIEW_HEIGHT = 720;
 
 export function EditorCard() {
-  const stageRef = useRef<Stage>(null);
+  const stageRef = useRef<Konva.Stage>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null);
   const [previewSize, setPreviewSize] = useState({ width: PREVIEW_WIDTH, height: PREVIEW_HEIGHT });

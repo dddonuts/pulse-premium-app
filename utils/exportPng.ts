@@ -1,4 +1,4 @@
-import type { Stage } from "konva";
+import type Konva from "konva";
 
 const HD_PIXEL_RATIO = 3;
 
@@ -8,7 +8,7 @@ const HD_PIXEL_RATIO = 3;
  * @param filename - nom du fichier téléchargé
  */
 export function exportStageToPng(
-  stageRef: React.RefObject<Stage | null>,
+  stageRef: React.RefObject<Konva.Stage | null>,
   filename: string = "pulse-premium-banner.png"
 ): void {
   const stage = stageRef.current;

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Stage, Layer, Group, Circle, Image } from "react-konva";
-import type { Stage as KonvaStage } from "konva";
+import type Konva from "konva";
 import { useBannerStore } from "@/store/useBannerStore";
 import { getFrame, type FrameConfig } from "@/frames";
 import { loadImage } from "@/utils/loadImage";
@@ -12,7 +12,7 @@ import { loadImage } from "@/utils/loadImage";
 const PROFILE_SIZE = 1080;
 
 interface BannerStageProps {
-  stageRef: React.RefObject<KonvaStage | null>;
+  stageRef: React.RefObject<Konva.Stage | null>;
   width: number;
   height: number;
 }

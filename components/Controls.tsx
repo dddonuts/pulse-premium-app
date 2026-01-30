@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import type { Stage } from "konva";
+import type Konva from "konva";
 import { useBannerStore, hasMinimalContent } from "@/store/useBannerStore";
 import { exportStageToPng } from "@/utils/exportPng";
 import { Button } from "@/components/ui/Button";
@@ -9,7 +9,7 @@ import { Slider } from "@/components/ui/Slider";
 import { frames, getFrame, type FrameId } from "@/frames";
 
 interface ControlsProps {
-  stageRef: React.RefObject<Stage | null>;
+  stageRef: React.RefObject<Konva.Stage | null>;
 }
 
 export function Controls({ stageRef }: ControlsProps) {
