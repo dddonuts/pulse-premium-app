@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Stage, Layer, Group, Circle, Image } from "react-konva";
+import { useEffect, useState } from "react";
+import { Stage, Layer, Group, Image as KonvaImage } from "react-konva";
 import type Konva from "konva";
 import { useBannerStore } from "@/store/useBannerStore";
 import { getFrame, type FrameConfig } from "@/frames";
@@ -12,7 +12,7 @@ import { loadImage } from "@/utils/loadImage";
 const PROFILE_SIZE = 1080;
 
 interface BannerStageProps {
-  stageRef: React.RefObject<Konva.Stage | null>;
+  stageRef: React.MutableRefObject<Konva.Stage | null>;
   width: number;
   height: number;
 }
@@ -47,7 +47,7 @@ function FrameImage({ frame, size }: { frame: FrameConfig; size: number }) {
   const cropY = Math.floor(maxCropY * cropYBias);
 
   return (
-    <Image
+    <KonvaImage
       image={image}
       x={0}
       y={0}
@@ -100,7 +100,13 @@ export function BannerStage({ stageRef, width, height }: BannerStageProps) {
             height: `${PROFILE_SIZE}px`,
           }}
         >
-          <Stage ref={stageRef} width={PROFILE_SIZE} height={PROFILE_SIZE}>
+          <Stage
+            ref={(node) => {
+              stageRef.current = node;
+            }}
+            width={PROFILE_SIZE}
+            height={PROFILE_SIZE}
+          >
             <Layer>
               {/* 1) Photo derrière (clippée en rond) */}
               {photoImg && (
@@ -132,7 +138,7 @@ export function BannerStage({ stageRef, width, height }: BannerStageProps) {
                     const shiftY = clamp(desiredShiftY, -maxShiftY, maxShiftY);
 
                     return (
-                      <Image
+                      <KonvaImage
                         image={photoImg}
                         // Convention: Position X/Y > 0 déplace l'image vers la droite / vers le bas.
                         x={cx - target / 2 - (scaledW - target) / 2 + shiftX}

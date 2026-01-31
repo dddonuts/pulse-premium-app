@@ -105,8 +105,6 @@ export function BackgroundLogoField() {
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     window.addEventListener("blur", onPointerLeave);
 
-    const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
-
     const step = (t: number) => {
       const { w, h } = sizeRef.current;
       const dt = lastTRef.current ? Math.min(0.025, (t - lastTRef.current) / 1000) : 0.016;
@@ -235,6 +233,7 @@ export function BackgroundLogoField() {
       {/* Animated logo field */}
       <div ref={containerRef} className="absolute inset-0 opacity-100">
         {bodies.map((b) => (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             key={b.id}
             src={b.src}
