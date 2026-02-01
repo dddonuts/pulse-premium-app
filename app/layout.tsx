@@ -29,8 +29,16 @@ export const metadata: Metadata = {
     description:
       "Choisis ton cadre, ajuste ta photo, télécharge en HD. Interface premium et animations.",
     type: "website",
-    // Image statique (fiable pour les previews de partage)
+    // 1) Preview “standard” 1200×630 (Discord/Twitter)
+    // 2) Fallback carré (au cas où)
     images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Pulse Premium — Générateur",
+        type: "image/png",
+      },
       {
         url: "/frames/original.png.png",
         width: 1080,
@@ -44,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pulse Premium",
     description: "Photo de profil TikTok premium — cadres animés + export HD.",
-    images: ["/frames/original.png.png"],
+    images: ["/opengraph-image"],
   },
 };
 
