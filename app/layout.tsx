@@ -3,12 +3,7 @@ import { Inter, Russo_One } from "next/font/google";
 import "./globals.css";
 import { BackgroundLogoField } from "@/components/BackgroundLogoField";
 
-function getSiteUrl() {
-  // Vercel expose VERCEL_URL = "mon-site.vercel.app"
-  const vercel = process.env.VERCEL_URL;
-  if (vercel) return new URL(`https://${vercel}`);
-  return new URL("http://localhost:3000");
-}
+const SITE_URL = new URL("https://pulse-premium-generator.vercel.app");
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +19,8 @@ const russo = Russo_One({
 });
 
 export const metadata: Metadata = {
-  metadataBase: getSiteUrl(),
+  // IMPORTANT: Discord/aperçus ont besoin d'une URL absolue atteignable (pas localhost).
+  metadataBase: SITE_URL,
   title: "Pulse Premium — Photo de profil TikTok",
   description:
     "Générateur de photo de profil TikTok premium : choisis ton cadre, ajuste ta photo, télécharge en HD.",
@@ -34,7 +30,15 @@ export const metadata: Metadata = {
       "Choisis ton cadre, ajuste ta photo, télécharge en HD. Interface premium et animations.",
     type: "website",
     // Image statique (fiable pour les previews de partage)
-    images: [{ url: "/frames/original.png.png", alt: "Pulse Premium" }],
+    images: [
+      {
+        url: "/frames/original.png.png",
+        width: 1080,
+        height: 1080,
+        alt: "Pulse Premium",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
