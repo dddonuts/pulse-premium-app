@@ -33,13 +33,14 @@ export const metadata: Metadata = {
     description:
       "Choisis ton cadre, ajuste ta photo, télécharge en HD. Interface premium et animations.",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Pulse Premium" }],
+    // Image statique (fiable pour les previews de partage)
+    images: [{ url: "/frames/original.png.png", alt: "Pulse Premium" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pulse Premium",
     description: "Photo de profil TikTok premium — cadres animés + export HD.",
-    images: ["/opengraph-image"],
+    images: ["/frames/original.png.png"],
   },
 };
 
